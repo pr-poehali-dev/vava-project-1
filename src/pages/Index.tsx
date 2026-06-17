@@ -2,250 +2,196 @@ import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 
-const HERO_IMG = 'https://cdn.poehali.dev/projects/b9501066-c197-479c-94a8-e61e90507c6d/files/5a3bf480-b2a7-4d06-8993-662aa182b455.jpg';
-const PROJECT_IMG = 'https://cdn.poehali.dev/projects/b9501066-c197-479c-94a8-e61e90507c6d/files/7facbf11-cb2a-48fd-aca6-b0e0008d248c.jpg';
-
 const NAV = [
-  { label: 'Главная', href: '#hero' },
-  { label: 'Услуги', href: '#services' },
-  { label: 'Продукция', href: '#products' },
-  { label: 'Проекты', href: '#projects' },
+  { label: 'Вольеры', href: '#volyery' },
+  { label: 'Навесы', href: '#navesy' },
+  { label: 'Ворота', href: '#vorota' },
   { label: 'Контакты', href: '#contacts' },
 ];
 
-const SERVICES = [
-  { icon: 'Ruler', title: 'Проектирование', text: 'Разработка чертежей и КМД с расчётом нагрузок и согласованием.' },
-  { icon: 'Factory', title: 'Производство', text: 'Изготовление конструкций любой сложности на собственном заводе.' },
-  { icon: 'Truck', title: 'Доставка', text: 'Логистика по всей России собственным и привлечённым транспортом.' },
-  { icon: 'HardHat', title: 'Монтаж', text: 'Профессиональный монтаж бригадами с допусками СРО.' },
-];
-
 const PRODUCTS = [
-  { icon: 'Building2', title: 'Каркасы зданий', text: 'Быстровозводимые ангары, склады, цеха и торговые комплексы.' },
-  { icon: 'GitBranch', title: 'Фермы и балки', text: 'Стропильные фермы, прогоны и несущие балки под нагрузку.' },
-  { icon: 'Layers', title: 'Лестницы и площадки', text: 'Технологические лестницы, ограждения и рабочие площадки.' },
-  { icon: 'Cylinder', title: 'Ёмкости и резервуары', text: 'Металлические баки, бункеры и резервуарное оборудование.' },
-];
-
-const PROJECTS = [
-  { title: 'Складской комплекс', area: '4 200 м²', city: 'Московская область' },
-  { title: 'Производственный цех', area: '2 800 м²', city: 'Калужская область' },
-  { title: 'Торговый павильон', area: '1 500 м²', city: 'г. Тула' },
-];
-
-const STATS = [
-  { value: '15', label: 'лет на рынке' },
-  { value: '480+', label: 'объектов сдано' },
-  { value: '12 000', label: 'тонн в год' },
-  { value: '100%', label: 'гарантия качества' },
+  {
+    id: 'volyery',
+    title: 'Вольеры',
+    desc: 'Сварные металлические вольеры для собак и других животных. Оцинкованная сетка, надёжный каркас из профильной трубы, любые размеры под заказ.',
+    img: 'https://cdn.poehali.dev/projects/b9501066-c197-479c-94a8-e61e90507c6d/files/1317b18e-5aab-4304-8178-6a2801065b88.jpg',
+    features: ['Размер под заказ', 'Оцинковка или порошковая покраска', 'Сборка входит в стоимость'],
+  },
+  {
+    id: 'navesy',
+    title: 'Навесы',
+    desc: 'Металлические навесы для автомобилей, террас и входных групп. Каркас из профильной трубы, кровля — поликарбонат или профлист.',
+    img: 'https://cdn.poehali.dev/projects/b9501066-c197-479c-94a8-e61e90507c6d/files/8c63a47b-88d2-48fd-bed7-522e7874e3a4.jpg',
+    features: ['Под авто, мотоцикл, дрова', 'Поликарбонат или профлист', 'Монтаж под ключ'],
+  },
+  {
+    id: 'vorota',
+    title: 'Откатные ворота',
+    desc: 'Откатные ворота из профильной трубы с обшивкой профлистом. Ручные или с электроприводом, антикоррозийное покрытие.',
+    img: 'https://cdn.poehali.dev/projects/b9501066-c197-479c-94a8-e61e90507c6d/files/75990ee3-6eb0-4d19-b48f-c414180c9fa9.jpg',
+    features: ['Ручные и автоматические', 'Любая ширина проёма', 'Гарантия 2 года'],
+  },
 ];
 
 export default function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [sent, setSent] = useState(false);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+
       {/* HEADER */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-primary/95 backdrop-blur-sm border-b border-white/10">
+      <header className="fixed top-0 inset-x-0 z-50 bg-primary/96 backdrop-blur-sm border-b border-white/10">
         <div className="container mx-auto flex items-center justify-between h-16 px-4">
-          <a href="#hero" className="flex items-center gap-2 text-primary-foreground">
-            <span className="flex h-9 w-9 items-center justify-center bg-accent">
-              <Icon name="Hexagon" size={20} className="text-accent-foreground" />
+          <a href="#" className="flex items-center gap-2 text-primary-foreground">
+            <span className="flex h-8 w-8 items-center justify-center bg-accent">
+              <Icon name="Wrench" size={16} className="text-white" />
             </span>
-            <span className="font-display text-xl font-bold tracking-wide uppercase">СтальПром</span>
+            <span className="font-display text-lg font-bold uppercase tracking-widest">МеталСтрой</span>
           </a>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {NAV.map((n) => (
-              <a key={n.href} href={n.href} className="text-sm font-medium text-primary-foreground/80 hover:text-accent transition-colors uppercase tracking-wide">
+          <nav className="hidden md:flex items-center gap-7">
+            {NAV.map(n => (
+              <a key={n.href} href={n.href} className="text-sm text-primary-foreground/75 hover:text-accent transition-colors uppercase tracking-wide">
                 {n.label}
               </a>
             ))}
           </nav>
 
-          <a href="tel:+74950000000" className="hidden md:flex items-center gap-2 text-primary-foreground font-display font-semibold">
-            <Icon name="Phone" size={16} className="text-accent" />
-            +7 (495) 000-00-00
+          <a href="tel:+70000000000" className="hidden md:flex items-center gap-2 text-primary-foreground text-sm font-medium">
+            <Icon name="Phone" size={14} className="text-accent" />
+            +7 (000) 000-00-00
           </a>
 
-          <button className="md:hidden text-primary-foreground" onClick={() => setMenuOpen(!menuOpen)}>
-            <Icon name={menuOpen ? 'X' : 'Menu'} size={26} />
+          <button className="md:hidden text-primary-foreground" onClick={() => setMenuOpen(v => !v)}>
+            <Icon name={menuOpen ? 'X' : 'Menu'} size={24} />
           </button>
         </div>
-
         {menuOpen && (
-          <nav className="md:hidden bg-primary border-t border-white/10 px-4 py-4 flex flex-col gap-3">
-            {NAV.map((n) => (
-              <a key={n.href} href={n.href} onClick={() => setMenuOpen(false)} className="text-primary-foreground/80 hover:text-accent uppercase tracking-wide text-sm">
+          <div className="md:hidden bg-primary px-4 pb-4 flex flex-col gap-3 border-t border-white/10">
+            {NAV.map(n => (
+              <a key={n.href} href={n.href} onClick={() => setMenuOpen(false)} className="text-primary-foreground/75 hover:text-accent uppercase text-sm tracking-wide">
                 {n.label}
               </a>
             ))}
-          </nav>
+            <a href="tel:+70000000000" className="text-accent font-medium text-sm">+7 (000) 000-00-00</a>
+          </div>
         )}
       </header>
 
       {/* HERO */}
-      <section id="hero" className="relative min-h-screen flex items-center pt-16">
-        <div className="absolute inset-0">
-          <img src={HERO_IMG} alt="Производство металлоконструкций" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
-        </div>
-
-        <div className="container mx-auto relative px-4 py-24">
-          <div className="max-w-2xl animate-fade-up">
-            <div className="inline-flex items-center gap-2 border-l-4 border-accent pl-3 mb-6">
-              <span className="text-accent font-display uppercase tracking-[0.2em] text-sm">Производство полного цикла</span>
-            </div>
-            <h1 className="font-display text-5xl md:text-7xl font-bold uppercase leading-[0.95] text-primary-foreground text-balance">
-              Металлоконструкции <span className="text-accent">любой</span> сложности
-            </h1>
-            <p className="mt-6 text-lg text-primary-foreground/80 max-w-xl">
-              Проектируем, изготавливаем и монтируем металлоконструкции для промышленного и гражданского строительства. Собственный завод и инженерное бюро.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 font-display uppercase tracking-wide h-14 px-8 rounded-none" asChild>
-                <a href="#contacts">Рассчитать проект</a>
-              </Button>
-              <Button size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent font-display uppercase tracking-wide h-14 px-8 rounded-none" asChild>
-                <a href="#products">Каталог продукции</a>
-              </Button>
-            </div>
+      <section className="relative bg-primary text-primary-foreground pt-16 pb-20 overflow-hidden">
+        <div className="absolute inset-0 opacity-10"
+          style={{ backgroundImage: 'repeating-linear-gradient(90deg, #fff 0, #fff 1px, transparent 1px, transparent 60px), repeating-linear-gradient(180deg, #fff 0, #fff 1px, transparent 1px, transparent 60px)' }}
+        />
+        <div className="container mx-auto px-4 relative pt-16">
+          <div className="inline-block border-l-4 border-accent pl-3 mb-5">
+            <span className="font-display text-accent uppercase tracking-[0.2em] text-sm">Производство и монтаж</span>
           </div>
-        </div>
-      </section>
-
-      {/* STATS */}
-      <section className="bg-primary text-primary-foreground border-t border-white/10">
-        <div className="container mx-auto grid grid-cols-2 md:grid-cols-4 px-4">
-          {STATS.map((s, i) => (
-            <div key={s.label} className={`py-10 text-center ${i !== 0 ? 'md:border-l border-white/10' : ''}`}>
-              <div className="font-display text-4xl md:text-5xl font-bold text-accent">{s.value}</div>
-              <div className="mt-2 text-sm uppercase tracking-wide text-primary-foreground/70">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section id="services" className="py-24">
-        <div className="container mx-auto px-4">
-          <SectionTitle eyebrow="Что мы делаем" title="Услуги" />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border mt-12">
-            {SERVICES.map((s) => (
-              <div key={s.title} className="group bg-card p-8 hover:bg-primary transition-colors duration-300">
-                <span className="flex h-14 w-14 items-center justify-center bg-secondary group-hover:bg-accent transition-colors">
-                  <Icon name={s.icon} size={26} className="text-primary group-hover:text-accent-foreground transition-colors" />
-                </span>
-                <h3 className="mt-6 font-display text-xl font-semibold uppercase tracking-wide group-hover:text-primary-foreground transition-colors">{s.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground group-hover:text-primary-foreground/70 transition-colors">{s.text}</p>
-              </div>
-            ))}
+          <h1 className="font-display text-5xl md:text-6xl font-bold uppercase leading-[0.95] max-w-2xl">
+            Металлоконструкции<br /><span className="text-accent">под ключ</span>
+          </h1>
+          <p className="mt-5 text-primary-foreground/70 max-w-lg text-base">
+            Вольеры, навесы и откатные ворота от ИП МеталСтрой. Изготовим по вашим размерам, привезём и установим.
+          </p>
+          <div className="mt-8 flex gap-3 flex-wrap">
+            <Button className="bg-accent text-white hover:bg-accent/90 font-display uppercase tracking-wide h-12 px-7 rounded-none" asChild>
+              <a href="#contacts">Узнать цену</a>
+            </Button>
+            <Button variant="outline" className="border-white/30 text-primary-foreground bg-transparent hover:bg-white/10 font-display uppercase tracking-wide h-12 px-7 rounded-none" asChild>
+              <a href="#volyery">Наши работы</a>
+            </Button>
           </div>
         </div>
       </section>
 
       {/* PRODUCTS */}
-      <section id="products" className="py-24 bg-secondary">
-        <div className="container mx-auto px-4">
-          <SectionTitle eyebrow="Каталог" title="Продукция" />
-          <div className="grid sm:grid-cols-2 gap-6 mt-12">
-            {PRODUCTS.map((p) => (
-              <div key={p.title} className="flex gap-5 bg-card p-8 border-l-4 border-accent hover-scale">
-                <span className="shrink-0 flex h-12 w-12 items-center justify-center bg-primary">
-                  <Icon name={p.icon} size={24} className="text-accent" />
-                </span>
-                <div>
-                  <h3 className="font-display text-xl font-semibold uppercase tracking-wide">{p.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{p.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROJECTS */}
-      <section id="projects" className="py-24">
-        <div className="container mx-auto px-4">
-          <SectionTitle eyebrow="Портфолио" title="Реализованные проекты" />
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
-            {PROJECTS.map((p) => (
-              <div key={p.title} className="group relative overflow-hidden">
-                <img src={PROJECT_IMG} alt={p.title} className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 p-6">
-                  <div className="text-accent font-display text-sm uppercase tracking-wide">{p.city}</div>
-                  <h3 className="mt-1 font-display text-2xl font-semibold uppercase text-primary-foreground">{p.title}</h3>
-                  <div className="mt-2 inline-block bg-accent text-accent-foreground font-display text-sm px-3 py-1">{p.area}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CONTACTS */}
-      <section id="contacts" className="py-24 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-16">
-          <div>
-            <SectionTitle eyebrow="Связаться с нами" title="Контакты" light />
-            <p className="mt-6 text-primary-foreground/70 max-w-md">
-              Оставьте заявку — инженер свяжется с вами в течение 30 минут и рассчитает стоимость вашего проекта.
-            </p>
-            <div className="mt-10 space-y-5">
-              <ContactRow icon="Phone" label="Телефон" value="+7 (495) 000-00-00" />
-              <ContactRow icon="Mail" label="Почта" value="info@stalprom.ru" />
-              <ContactRow icon="MapPin" label="Адрес" value="г. Москва, Промзона 24, корп. 3" />
-              <ContactRow icon="Clock" label="Режим работы" value="Пн–Пт 8:00–19:00" />
+      {PRODUCTS.map((p, i) => (
+        <section key={p.id} id={p.id} className={`py-20 ${i % 2 === 1 ? 'bg-secondary' : 'bg-background'}`}>
+          <div className={`container mx-auto px-4 flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-center`}>
+            <div className="md:w-1/2">
+              <img src={p.img} alt={p.title} className="w-full h-72 md:h-96 object-cover" />
             </div>
-          </div>
-
-          <form className="bg-card text-card-foreground p-8" onSubmit={(e) => e.preventDefault()}>
-            <h3 className="font-display text-2xl font-semibold uppercase">Оставить заявку</h3>
-            <div className="mt-6 space-y-4">
-              <input className="w-full h-12 px-4 bg-secondary border-0 focus:outline-none focus:ring-2 focus:ring-accent" placeholder="Ваше имя" />
-              <input className="w-full h-12 px-4 bg-secondary border-0 focus:outline-none focus:ring-2 focus:ring-accent" placeholder="Телефон" />
-              <textarea className="w-full px-4 py-3 bg-secondary border-0 focus:outline-none focus:ring-2 focus:ring-accent resize-none" rows={4} placeholder="Опишите задачу" />
-              <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-display uppercase tracking-wide h-12 rounded-none">
-                Отправить заявку
+            <div className="md:w-1/2">
+              <span className="text-accent font-display uppercase tracking-[0.2em] text-sm">Продукция</span>
+              <h2 className="font-display text-4xl font-bold uppercase mt-2 mb-4">{p.title}</h2>
+              <p className="text-muted-foreground mb-6">{p.desc}</p>
+              <ul className="space-y-2 mb-8">
+                {p.features.map(f => (
+                  <li key={f} className="flex items-center gap-3 text-sm">
+                    <span className="flex h-6 w-6 items-center justify-center bg-accent shrink-0">
+                      <Icon name="Check" size={14} className="text-white" />
+                    </span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-display uppercase tracking-wide h-11 px-6 rounded-none" asChild>
+                <a href="#contacts">Рассчитать стоимость</a>
               </Button>
             </div>
+          </div>
+        </section>
+      ))}
+
+      {/* CONTACTS */}
+      <section id="contacts" className="py-20 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-14">
+          <div>
+            <span className="text-accent font-display uppercase tracking-[0.2em] text-sm">Напишите нам</span>
+            <h2 className="font-display text-4xl font-bold uppercase mt-2 mb-6">Контакты</h2>
+            <p className="text-primary-foreground/70 mb-8 max-w-sm">Оставьте заявку — перезвоним в течение часа и обсудим детали.</p>
+            <div className="space-y-4">
+              {[
+                { icon: 'Phone', text: '+7 (000) 000-00-00' },
+                { icon: 'MessageCircle', text: 'WhatsApp / Telegram' },
+                { icon: 'MapPin', text: 'Ваш город' },
+              ].map(r => (
+                <div key={r.text} className="flex items-center gap-3">
+                  <span className="flex h-10 w-10 items-center justify-center bg-accent shrink-0">
+                    <Icon name={r.icon} size={18} className="text-white" />
+                  </span>
+                  <span className="font-display font-medium">{r.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <form className="bg-card text-card-foreground p-8" onSubmit={e => { e.preventDefault(); setSent(true); }}>
+            <h3 className="font-display text-2xl font-bold uppercase mb-5">Оставить заявку</h3>
+            {sent ? (
+              <div className="flex flex-col items-center justify-center h-48 gap-3 text-center">
+                <Icon name="CheckCircle" size={40} className="text-accent" />
+                <p className="font-display uppercase tracking-wide">Заявка принята! Скоро свяжемся.</p>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                <input required className="w-full h-11 px-4 bg-secondary border-0 focus:outline-none focus:ring-2 focus:ring-accent text-sm" placeholder="Имя" />
+                <input required className="w-full h-11 px-4 bg-secondary border-0 focus:outline-none focus:ring-2 focus:ring-accent text-sm" placeholder="Телефон" />
+                <select className="w-full h-11 px-4 bg-secondary border-0 focus:outline-none focus:ring-2 focus:ring-accent text-sm text-muted-foreground">
+                  <option value="">Что интересует?</option>
+                  <option>Вольер</option>
+                  <option>Навес</option>
+                  <option>Откатные ворота</option>
+                  <option>Другое</option>
+                </select>
+                <textarea className="w-full px-4 py-3 bg-secondary border-0 focus:outline-none focus:ring-2 focus:ring-accent text-sm resize-none" rows={3} placeholder="Размеры, пожелания..." />
+                <Button type="submit" className="w-full bg-accent text-white hover:bg-accent/90 font-display uppercase tracking-wide h-11 rounded-none">
+                  Отправить
+                </Button>
+              </div>
+            )}
           </form>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-primary border-t border-white/10 text-primary-foreground/60 py-8">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-          <div className="flex items-center gap-2 font-display uppercase tracking-wide text-primary-foreground">
-            <Icon name="Hexagon" size={18} className="text-accent" /> СтальПром
-          </div>
-          <span>© 2026 СтальПром. Производство металлоконструкций.</span>
+      <footer className="bg-primary border-t border-white/10 py-6 text-primary-foreground/50 text-sm">
+        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between gap-2">
+          <span className="font-display uppercase text-primary-foreground tracking-widest text-sm">МеталСтрой</span>
+          <span>© 2026 ИП МеталСтрой. Металлоконструкции под заказ.</span>
         </div>
       </footer>
-    </div>
-  );
-}
-
-function SectionTitle({ eyebrow, title, light }: { eyebrow: string; title: string; light?: boolean }) {
-  return (
-    <div>
-      <span className="text-accent font-display uppercase tracking-[0.2em] text-sm">{eyebrow}</span>
-      <h2 className={`mt-2 font-display text-4xl md:text-5xl font-bold uppercase ${light ? 'text-primary-foreground' : ''}`}>{title}</h2>
-    </div>
-  );
-}
-
-function ContactRow({ icon, label, value }: { icon: string; label: string; value: string }) {
-  return (
-    <div className="flex items-center gap-4">
-      <span className="flex h-11 w-11 items-center justify-center bg-accent shrink-0">
-        <Icon name={icon} size={20} className="text-accent-foreground" />
-      </span>
-      <div>
-        <div className="text-xs uppercase tracking-wide text-primary-foreground/50">{label}</div>
-        <div className="font-display font-medium text-lg">{value}</div>
-      </div>
     </div>
   );
 }
